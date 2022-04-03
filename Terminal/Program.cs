@@ -4,7 +4,10 @@ using BetterEventSystem;
 namespace Terminal;
 
 internal class Program {
+
     static void Main(string[] args) {
+        Console.WriteLine("Welcome to Terminal!");
+        
         new Event("quit").AddListener((e) => {
             Console.WriteLine("Quitting...");
             Environment.Exit(0);
@@ -16,7 +19,7 @@ internal class Program {
         Settings settings = new Settings();
 
         while (true) {
-            Console.Write(">> ");
+            Console.Write(">>> ");
             string[] input = Console.ReadLine().ToLower().Split(" "); // Split input by spaces (and make everything lowercase)
             string command = input[0]; // Get the first word of the input, which is the command
             string[] cmdArgs = input.Skip(1).ToArray(); // Get the rest of the input, which are the arguments
