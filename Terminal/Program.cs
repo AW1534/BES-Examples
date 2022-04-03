@@ -13,6 +13,8 @@ internal class Program {
             Environment.Exit(0);
         });
         
+        new Event("clear").AddListener(e => Console.Clear());
+        
         // instantiate all classes that contain other events.
         new Help();
         new Blackjack();
@@ -23,8 +25,10 @@ internal class Program {
             string[] input = Console.ReadLine().ToLower().Split(" "); // Split input by spaces (and make everything lowercase)
             string command = input[0]; // Get the first word of the input, which is the command
             string[] cmdArgs = input.Skip(1).ToArray(); // Get the rest of the input, which are the arguments
-
+            
             try {
+                Console.Title = "Terminal - " + command; // Set the title of the console to the command
+                
                 // Try to find an event with the given name, and broadcast it while passing the arguments.
                 // We are doing it synchronously, so we can wait for the command to finish before continuing.
                 EventSystem.GetEvent(command, settings.CreateIfNotExists).BroadcastSync(data: cmdArgs);

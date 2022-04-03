@@ -120,14 +120,14 @@ public class Blackjack
 
     public Blackjack() {
         new Event("blackjack").AddListener((e) => {
-            Main(e.data as string[]);
+            Start();
         });
     }
 
-    void Main(string[] args)
+    void Start()
     {
         Console.Title = "♠♥♣♦ Blackjack Game by Niv Harel";
-        Console.WriteLine("Welcome to blackjack 0.1a\n");
+        Console.WriteLine("Welcome to blackjack\n");
 
         chips = 100;
         deck = new Deck();
